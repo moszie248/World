@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://unpkg.com/formiojs@latest/dist/formio.full.min.css'>
+    <script src='https://unpkg.com/formiojs@latest/dist/formio.full.min.js'></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+          $.getJSON( 'form.json', function(JsonForm){
+            Formio.createForm(document.getElementById('form'), JsonForm)
+              .then(function(form){
+            
+                form.on('submit', function(submission) {
+                    console.log(submission);
+                    console.log('Submission was made!');
+                });
+                
+            });      
+          })
+        }
+    </script>
+  </head>
+  <body>
+      <div class="container">
+          <div class="panel panel-default">  
+              <h1>TASK MANAGEMENT.</h1>
+          </div>
+      </div>
+    <div class="container">
+        <div class="panel panel-default">  
+            <div id='form' class="panel-body"></div>
+        </div>
+    </div>
+
+  </body>
+</html>
